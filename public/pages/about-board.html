@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="../style.css">
+ <style>
+   .board-carousel {
+       max-width: 800px;
+       margin: 50px auto;
+       padding: 0 20px;
+   }
+
+
+   .carousel-container {
+       position: relative;
+       background: white;
+       border-radius: 10px;
+       padding: 40px;
+       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   }
+
+
+   .carousel-slide {
+       display: none;
+       text-align: center;
+       animation: fadeIn 0.5s;
+   }
+
+
+   .carousel-slide.active {
+       display: block;
+   }
+
+
+   @keyframes fadeIn {
+       from { opacity: 0; }
+       to { opacity: 1; }
+   }
+
+
+
+
+   .board-member-image {
+     width: 250px;
+     height: 250px;
+     border-radius: 50%;
+     object-fit: cover;
+     margin: 0 auto 30px;
+     border: 5px solid #fff;
+     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+   }
+
+
+   .board-member-name {
+     font-size: 28px;
+     font-weight: bold;
+     margin-bottom: 10px;
+     color: #333;
+   }
+
+
+   .board-member-title {
+     font-size: 18px;
+     color: #666;
+     margin-bottom: 20px;
+     font-style: italic;
+   }
+
+
+   .board-member-description {
+     font-size: 16px;
+     line-height: 1.6;
+     color: #555;
+     max-width: 600px;
+     margin: 0 auto;
+   }
+
+
+   .carousel-button {
+     position: absolute;
+     top: 50%;
+     transform: translateY(-50%);
+     background: rgba(0, 0, 0, 0.5);
+     color: white;
+     border: none;
+     padding: 15px 20px;
+     font-size: 24px;
+     cursor: pointer;
+     border-radius: 5px;
+     transition: background 0.3s;
+   }
+
+
+   .carousel-button:hover {
+     background: rgba(0, 0, 0, 0.8);
+   }
+
+
+   .carousel-button.prev {
+     left: 10px;
+   }
+
+
+   .carousel-button.next {
+     right: 10px;
+   }
+
+
+   .carousel-indicators {
+     text-align: center;
+     margin-top: 30px;
+   }
+
+
+   .indicator {
+     display: inline-block;
+     width: 12px;
+     height: 12px;
+     border-radius: 50%;
+     background: #ccc;
+     margin: 0 5px;
+     cursor: pointer;
+     transition: background 0.3s;
+   }
+
+
+   .indicator.active {
+     background: #333;
+   }
+ </style>
+</head>
+<body>
+ <header class="main-header">
+   <div class="container">
+     <div class="logo">
+       <h2>NAFN</h2>
+     </div>
+     <nav class="main-nav">
+       <ul>
+         <li><a href="index.html" class="active">Home</a></li>
+         <li class="dropdown" id="aboutDropdown">
+           <a href="#">About Us</a>
+           <ul class="dropdown-menu" id="dropdownMenu">
+             <li><a href="about-story.html">Our Story</a></li>
+             <li><a href="about-board.html">Meet the Board</a></li>
+           </ul>
+         </li>
+         <li><a href="why-nafn.html">Why NAFN?</a></li>
+         <li><a href="foster.html">Foster Now</a></li>
+         <li><a href="volunteer.html">Volunteer Today</a></li>
+         <li><a href="donate.html">Donate</a></li>
+       </ul>
+     </nav>
+   </div>
+ </header>
+
+
+ <h1>Meet Our Board Members</h1>
+
+
+ <div class="board-carousel">
+   <div class="carousel-container">
+       <div class="carousel-slide active">
+           <img src="../pictures/Christi.jpg" alt="Board Member 1" class="board-member-image">
+           <h2 class="board-member-name">Christi Milroy</h2>
+           <h2 class="board-member-title">Vice President</h2>
+           <p class="board-member description">
+               With over 28 years of experience in Banking, Finance, and Wealth Management, Christi Milroy brings a
+               wealth of financial expertise to her role as Treasurer for Paws 'N Claws for the Cause.
+               Christi is passionate about making a difference in the lives of individuals facing mental or physical
+               health challenges, especially those who have no safe place fork their beloved animals while receiving
+               treatment.  By aligning her professional expertise with this compassionate mission, Christi is dedicated
+               to helping the organization create a lasting impact in the community.
+           </p>
+       </div>
+
+
+       <div class="carousel-slide">
+           <img src="../pictures/Katherine.jpg" alt="Board Member 1" class="board-member-image">
+           <h2 class="board-member-name">Katherine Dunbar Morss, RN</h2>
+           <h2 class="board-member-title">Secretary</h2>
+           <p class="board-member description">
+               Katherine is a single mother of 3 amazing adult children.  She was a massage therapist for 12 years
+               before becoming a nurse. Katherine worked as a Home Health RN Case Manager for over 12 years with
+               patients' ranging in age from 4 years to 103 years old.  She has seen the enormous positive impact
+               of animals in her patients’ lives. Many of them live alone and struggle with depression and anxiety.
+               Their animals provide a source of companionship and love that would not otherwise be available.
+               In many cases their animal is what makes their life tolerable. Over the years there were many instances
+               when her patients had to go to the hospital and there was nobody to care for their pet. Katherine has
+               taken animals home herself, reached out to church members for support and other caregivers and neighbors
+               who have taken animals into their homes.   There have been occasions when there was no solution and a
+               patient who really needed support refused care because they had no one to care for their pet.
+               An organization that would provide an option for patients to get the care they need and to be secure
+               in the knowledge that their animal is well taken care of would fill a huge need in the community.
+           </p>
+       </div>
+       <button class="carousel-button prev" onclick="changeSlide(-1)">&#10094;</button>
+       <button class="carousel-button next" onclick="changeSlide(1)">&#10095;</button>
+   </div>
+   <div class="carousel-indicators" id="indicators"></div>
+ </div>
+
+
+ <script>
+   // Get the dropdown elements
+   const dropdown = document.getElementById('aboutDropdown');
+   const dropdownMenu = document.getElementById('dropdownMenu');
+
+
+   // Show dropdown on mouse enter
+   dropdown.addEventListener('mouseenter', function() {
+     dropdownMenu.style.display = 'block';
+   });
+
+
+   // Hide dropdown on mouse leave
+   dropdown.addEventListener('mouseleave', function() {
+     dropdownMenu.style.display = 'none';
+   });
+
+
+   let currentSlide = 0;
+   const slides = document.querySelectorAll('.carousel-slide');
+   const indicatorContainer = document.getElementById('indicators');
+
+
+   slides.forEach((_, index) => {
+       const indicator = document.createElement('span');
+       indicator.classList.add('indicator');
+       if (index === 0) indicator.classList.add('active');
+       indicator.onclick = () => goToSlide(index);
+       indicatorContainer.appendChild(indicator);
+   });
+
+
+   const indicators = document.querySelectorAll('.indicator');
+
+
+   function showSlide(n) {
+       if (n >= slides.length) currentSlide = 0;
+       if (n < 0) currentSlide = slides.length - 1;
+
+
+       slides.forEach(slide => slide.classList.remove('active'));
+       indicators.forEach(indicator => indicator.classList.remove('active'));
+
+
+       slides[currentSlide].classList.add('active')
+       indicators[currentSlide].classList.add('active');
+   }
+
+
+   function changeSlide(direction) {
+       currentSlide += direction;
+       showSlide(currentSlide);
+   }
+
+
+   function goToSlide(n) {
+       currentSlide = n;
+       showSlide(currentSlide);
+   }
+ </script>
+
+
+</body>
+</html>

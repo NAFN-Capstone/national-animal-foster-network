@@ -2,30 +2,53 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home - NAFN</title>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li>
-        <a href="#">About Us</a>
-        <ul class="dropdown">
-          <li><a href="about-story.html">Our Story</a></li>
-          <li><a href="about-board.html">Meet the Board</a></li>
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <h2>NAFN</h2>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li class="dropdown" id="aboutDropdown">
+            <a href="#">About Us</a>
+            <ul class="dropdown-menu" id="dropdownMenu">
+              <li><a href="about-story.html">Our Story</a></li>
+              <li><a href="about-board.html">Meet the Board</a></li>
+            </ul>
+          </li>
+          <li><a href="why-nafn.html">Why NAFN?</a></li>
+          <li><a href="foster.html">Foster Now</a></li>
+          <li><a href="volunteer.html">Volunteer Today</a></li>
+          <li><a href="donate.html">Donate</a></li>
         </ul>
-      </li>
-      <li><a href="donate.html">Donate</a></li>
-      <li><a href="foster.html">Foster</a></li>
-      <li><a href="why-nafn.html">Why NAFN</a></li>
-      <li><a href="volunteer.html">Volunteer Now</a></li>
-    </ul>
-  </nav>
+      </nav>
+    </div>
+  </header>
 
   <h1>Welcome to NAFN</h1>
   <p>Mission statement</p>
+
+  <script>
+    // Get the dropdown elements
+    const dropdown = document.getElementById('aboutDropdown');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    // Show dropdown on mouse enter
+    dropdown.addEventListener('mouseenter', function() {
+      dropdownMenu.style.display = 'block';
+    });
+
+    // Hide dropdown on mouse leave
+    dropdown.addEventListener('mouseleave', function() {
+      dropdownMenu.style.display = 'none';
+    });
+  </script>
 
 </body>
 </html>

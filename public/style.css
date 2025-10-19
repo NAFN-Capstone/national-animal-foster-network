@@ -109,3 +109,47 @@
   .hero p {
     font-size: 1.2rem;
   }
+
+.carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 350px; 
+  overflow: hidden;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  border-radius: 5px;
+}
+/* CUTE CAROUSEL BUTTONS */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: #ffffffaa; /* Semi-transparent white */
+  border: 2px solid #91AA91; /* Soft NAFN green border */
+  color: #333;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: #91AA91;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }

@@ -1,5 +1,5 @@
 services:
-  web:
+  front:
     build:
       context: .
       dockerfile: Dockerfile
@@ -8,6 +8,14 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    env_file:
+      - .env
+    restart: unless-stopped
+
+  api:
+    build:
+      context: .
+      dockerfile: api.Dockerfile
     env_file:
       - .env
     restart: unless-stopped

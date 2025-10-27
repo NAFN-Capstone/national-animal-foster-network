@@ -17,7 +17,13 @@
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about-story.html">About Us</a></li>
+                    <li class="dropdown" id="aboutDropdown">
+                        <a href="#">About Us</a>
+                        <ul class="dropdown-menu" id="dropdownMenu">
+                          <li><a href="about-story.html">Our Story</a></li>
+                          <li><a href="about-board.html" class="active">Meet the Board</a></li>
+                        </ul>
+                      </li>
                     <li><a href="donate.html">Donate</a></li>
                     <li><a href="foster.html" class="active">Foster</a></li>
                     <li><a href="why-nafn.html">Why NAFN</a></li>
@@ -95,6 +101,17 @@
     </footer>
 
     <script>
+        const dropdown = document.getElementById('aboutDropdown');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdown.addEventListener('mouseenter', function() {
+            dropdownMenu.style.display = 'block';
+        });
+
+        dropdown.addEventListener('mouseleave', function() {
+            dropdownMenu.style.display = 'none';
+        });
+
     let currentSlide = 0;
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');

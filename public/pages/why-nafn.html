@@ -5,6 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why NAFN - NAFN</title>
     <link rel="stylesheet" href="../style.css">
+
+    <header class="main-header">
+        <div class="container">
+          <div class="logo">
+            <h2>NAFN</h2>
+          </div>
+          <nav class="main-nav">
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li class="dropdown" id="aboutDropdown">
+                <a href="#">About Us</a>
+                <ul class="dropdown-menu" id="dropdownMenu">
+                  <li><a href="about-story.html">Our Story</a></li>
+                  <li><a href="about-board.html" class="active">Meet the Board</a></li>
+                </ul>
+              </li>
+              <li><a href="why-nafn.html">Why NAFN?</a></li>
+              <li><a href="foster.html">Foster Now</a></li>
+              <li><a href="volunteer.html">Volunteer Today</a></li>
+              <li><a href="donate.html">Donate</a></li>
+            </ul>
+          </nav>
+        </div>
+      </header>
 </head>
 <body>
 
@@ -34,6 +58,19 @@
             <a href="#"><img src="../pictures/instagram.png" alt="Instagram" class="footer-icon"></a>
         </div>
     </footer>
+
+    <script>
+        const dropdown = document.getElementById('aboutDropdown');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdown.addEventListener('mouseenter', function() {
+            dropdownMenu.style.display = 'block';
+        });
+
+        dropdown.addEventListener('mouseleave', function() {
+            dropdownMenu.style.display = 'none';
+        });
+    </script>
 
 </body>
 </html>

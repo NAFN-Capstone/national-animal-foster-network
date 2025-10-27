@@ -110,22 +110,25 @@
     font-size: 1.2rem;
   }
 
-.carousel-container {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  height: 350px; 
-  overflow: hidden;
-}
-
-.carousel-slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; 
-  border-radius: 5px;
-}
+  .hero .carousel-container,
+  .image-carousel .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 350px; 
+    overflow: hidden;
+  }
+  
+  .hero .carousel-slide img,
+  .image-carousel .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 5px;
+  }
 /* CUTE CAROUSEL BUTTONS */
-.carousel-btn {
+.hero .carousel-btn,
+.image-carousel .carousel-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);

@@ -1,76 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Why NAFN - NAFN</title>
-    <link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why NAFN - NAFN</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      background: #91AA91;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-    <header class="main-header">
-        <div class="container">
-          <div class="logo">
-            <h2>NAFN</h2>
-          </div>
-          <nav class="main-nav">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li class="dropdown" id="aboutDropdown">
-                <a href="#">About Us</a>
-                <ul class="dropdown-menu" id="dropdownMenu">
-                  <li><a href="about-story.html">Our Story</a></li>
-                  <li><a href="about-board.html" class="active">Meet the Board</a></li>
-                </ul>
-              </li>
-              <li><a href="why-nafn.html">Why NAFN?</a></li>
-              <li><a href="foster.html">Foster Now</a></li>
-              <li><a href="volunteer.html">Volunteer Today</a></li>
-              <li><a href="donate.html">Donate</a></li>
-            </ul>
-          </nav>
-        </div>
-      </header>
+    section {
+      flex: 1;
+      padding: 60px 0;
+    }
+
+    .why-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .why-container img {
+      width: 70%;
+      border-radius: 5px;
+      margin-bottom: 30px;
+    }
+
+    .why-container h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .why-container p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444;
+    }
+  </style>
 </head>
+
 <body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
 
-    <section style="background: #91AA91; padding: 60px 0;">
-        <div style="max-width: 900px; margin: 0 auto; background: white; padding: 40px; text-align: center;">
-            
-            <img src="../pictures/why-nafn-temp.png" alt="Volunteer Team" style="width: 70%; border-radius: 5px; margin-bottom: 30px;">
+  <!-- MAIN SECTION -->
+  <section>
+    <div class="why-container">
+      <img src="../pictures/why-nafn-temp.png" alt="Volunteer Team" />
+      <h1>Why NAFN?</h1>
+      <p>
+        At the National Animal Foster Network, we believe no one should have to choose between their well-being and their beloved companion.
+        Many individuals facing medical crises, mental health challenges, addiction recovery, or domestic violence are forced to give up their pets
+        just to receive the care they need. This is a heartbreaking choice no one should ever face.
+      </p>
+      <p>
+        NAFN exists to bridge that gap. We provide temporary foster care, support services, and hope — ensuring people can seek help
+        while knowing their animals are safe, loved, and waiting for their return. We are not just protecting animals; we are protecting families,
+        dignity, and healing.
+      </p>
+    </div>
+  </section>
 
-            <h1 style="font-size: 32px; margin-bottom: 20px;">Why NAFN?</h1>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
 
-            <p style="font-size: 18px; line-height: 1.6; color: #444;">
-                At the National Animal Foster Network, we believe no one should have to choose between their well-being and their beloved companion.
-                Many individuals facing medical crises, mental health challenges, addiction recovery, or domestic violence are forced to give up their pets
-                just to receive the care they need. This is a heartbreaking choice no one should ever face.
-                <br><br>
-                NAFN exists to bridge that gap. We provide temporary foster care, support services, and hope — ensuring people can seek help
-                while knowing their animals are safe, loved, and waiting for their return. We are not just protecting animals; we are protecting families,
-                dignity, and healing.
-            </p>
-        </div>
-    </section>
+  <!-- HEADER & FOOTER SCRIPTS -->
+  <script>
+    // Load shared header
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
 
-    <footer class="nafn-footer">
-        <div class="footer-content">
-            <a href="#"><img src="../pictures/facebook.png" alt="Facebook" class="footer-icon"></a>
-            <a href="#"><img src="../pictures/tiktok.png" alt="TikTok" class="footer-icon"></a>
-            <a href="#"><img src="../pictures/instagram.png" alt="Instagram" class="footer-icon"></a>
-        </div>
-    </footer>
+        // Dropdown hover functionality
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => dropdownMenu.style.display = "block");
+          dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
+        }
 
-    <script>
-        const dropdown = document.getElementById('aboutDropdown');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-
-        dropdown.addEventListener('mouseenter', function() {
-            dropdownMenu.style.display = 'block';
+        // Highlight active link
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+          }
         });
+      });
 
-        dropdown.addEventListener('mouseleave', function() {
-            dropdownMenu.style.display = 'none';
-        });
-    </script>
-
+    // Load shared footer
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
 </body>
 </html>

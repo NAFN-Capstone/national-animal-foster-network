@@ -1,355 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <title>Donate Now - Supporting Pets and Owners</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-    
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #91AA91;
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-    
-        /* Header Styles - Override everything */
-        .main-header {
-            background-color: #2c3e50 !important;
-            padding: 1rem 0 !important;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1) !important;
-            position: sticky !important;
-            top: 0 !important;
-            z-index: 1000 !important;
-            margin: -40px -20px 40px -20px !important;
-        }
-    
-        .main-header .container {
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-            padding: 0 2rem !important;
-            display: flex !important;
-            justify-content: space-between !important;
-            align-items: center !important;
-            background: none !important;
-            box-shadow: none !important;
-            border-radius: 0 !important;
-        }
-    
-        .logo h2 {
-            color: white !important;
-            margin: 0 !important;
-            font-size: 1.8rem !important;
-        }
-    
-        .main-nav ul {
-            list-style: none !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            display: flex !important;
-            gap: 2rem !important;
-            align-items: center !important;
-        }
-    
-        .main-nav li {
-            display: inline-block !important;
-        }
-    
-        .main-nav a {
-            color: white !important;
-            text-decoration: none !important;
-            padding: 0.5rem 1rem !important;
-            transition: background-color 0.3s !important;
-            border-radius: 4px !important;
-            display: block !important;
-        }
-    
-        .main-nav a:hover {
-            background-color: rgba(255,255,255,0.1) !important;
-        }
-    
-        .main-nav a.active {
-            background-color: rgba(255,255,255,0.2) !important;
-        }
-    
-        /* Dropdown Styles */
-        .dropdown {
-            position: relative !important;
-        }
-    
-        .dropdown-menu {
-            display: none !important;
-            position: absolute !important;
-            top: 100% !important;
-            left: 0 !important;
-            background-color: #34495e !important;
-            min-width: 200px !important;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1) !important;
-            border-radius: 4px !important;
-            padding: 0.5rem 0 !important;
-            margin-top: 0.5rem !important;
-            list-style: none !important;
-        }
-    
-        .dropdown-menu li {
-            display: block !important;
-        }
-    
-        .dropdown-menu a {
-            display: block !important;
-            padding: 0.75rem 1.5rem !important;
-        }
-    
-        .dropdown-menu a:hover {
-            background-color: rgba(255,255,255,0.1) !important;
-        }
-    
-        /* Your donation form container */
-        .donation-container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-    
-        /* Rest of your styles... */
-        h1 {
-            color: #333;
-            font-size: 32px;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-    
-        .intro-text {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 30px;
-            text-align: center;
-            font-size: 16px;
-        }
-    
-        .section-title {
-            color: #333;
-            font-size: 24px;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: 600;
-        }
-    
-        .form-group {
-            margin-bottom: 20px;
-        }
-    
-        label {
-            display: block;
-            color: #333;
-            font-weight: 500;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-    
-        input[type="text"],
-        input[type="email"],
-        input[type="number"] {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 15px;
-            transition: border-color 0.3s;
-        }
-    
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="number"]:focus {
-            outline: none;
-            border-color: #91AA91;
-        }
-    
-        .donation-amounts {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-    
-        .amount-option {
-            padding: 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            text-align: center;
-            font-size: 20px;
-            font-weight: 600;
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s;
-            background: white;
-        }
-    
-        .amount-option:hover {
-            border-color: #91AA91;
-            transform: translateY(-2px);
-        }
-    
-        .amount-option.selected {
-            background: #91AA91;
-            color: white;
-            border-color: #91AA91;
-        }
-    
-        .custom-amount {
-            margin-top: 15px;
-        }
-    
-        .submit-btn {
-            width: 100%;
-            padding: 16px;
-            background: #91AA91;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            margin-top: 30px;
-        }
-    
-        .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(145, 170, 145, 0.4);
-        }
-    
-        .submit-btn:active {
-            transform: translateY(0);
-        }
-    
-        .required {
-            color: #e74c3c;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Donate Now - Supporting Pets and Owners</title>
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #91AA91;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Donation Container */
+    .donation-container {
+      max-width: 600px;
+      margin: 80px auto;
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      color: #333;
+      font-size: 32px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .intro-text {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .section-title {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 25px;
+      text-align: center;
+      font-weight: 600;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="number"] {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="number"]:focus {
+      outline: none;
+      border-color: #91AA91;
+    }
+
+    .donation-amounts {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .amount-option {
+      padding: 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: white;
+    }
+
+    .amount-option:hover {
+      border-color: #91AA91;
+      transform: translateY(-2px);
+    }
+
+    .amount-option.selected {
+      background: #91AA91;
+      color: white;
+      border-color: #91AA91;
+    }
+
+    .custom-amount {
+      margin-top: 15px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: #91AA91;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 30px;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(145, 170, 145, 0.4);
+    }
+
+    .submit-btn:active {
+      transform: translateY(0);
+    }
+
+    .required {
+      color: #e74c3c;
+    }
+
+    /* Keep footer at bottom */
+    .site-footer {
+      margin-top: auto;
+    }
+  </style>
 </head>
+
 <body>
-    <header class="main-header">
-        <div class="container">
-          <div class="logo">
-            <h2>NAFN</h2>
-          </div>
-          <nav class="main-nav">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li class="dropdown" id="aboutDropdown">
-                <a href="#">About Us</a>
-                <ul class="dropdown-menu" id="dropdownMenu">
-                  <li><a href="about-story.html">Our Story</a></li>
-                  <li><a href="about-board.html" class="active">Meet the Board</a></li>
-                </ul>
-              </li>
-              <li><a href="why-nafn.html">Why NAFN?</a></li>
-              <li><a href="foster.html">Foster Now</a></li>
-              <li><a href="volunteer.html">Volunteer Today</a></li>
-              <li><a href="donate.html">Donate</a></li>
-            </ul>
-          </nav>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
+
+  <div class="donation-container">
+    <h1>Supporting Pets and Owners</h1>
+    <p class="intro-text">
+      Every donation you make helps provide sanctuary for pets in need while their owners receive medical,
+      mental health, or addiction support. Support our cause by making a donation today. Your contribution will
+      make a real difference in the lives of pets and their owners.
+    </p>
+
+    <h2 class="section-title">Donate Now</h2>
+
+    <form id="donationForm">
+      <div class="form-group">
+        <label for="firstName">First Name <span class="required">*</span></label>
+        <input type="text" id="firstName" name="firstName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="lastName">Last Name <span class="required">*</span></label>
+        <input type="text" id="lastName" name="lastName" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email <span class="required">*</span></label>
+        <input type="email" id="email" name="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address <span class="required">*</span></label>
+        <input type="text" id="address" name="address" required />
+      </div>
+
+      <div class="form-group">
+        <label>Donation Amount <span class="required">*</span></label>
+        <div class="donation-amounts">
+          <div class="amount-option" data-amount="25">$25</div>
+          <div class="amount-option" data-amount="50">$50</div>
+          <div class="amount-option" data-amount="100">$100</div>
         </div>
-      </header>
-    <div class="donation-container">
-        <h1>Supporting Pets and Owners</h1>
-        <p class="intro-text">
-            Every donation you make helps provide sanctuary for pets in need while their owners receive medical, mental health or addiction support. Support our cause by making a donation today. Your contribution will make a real difference in the lives of pets and their owners.
-        </p>
+        <div class="custom-amount">
+          <input type="number" id="customAmount" name="customAmount" placeholder="Custom Amount" min="1" />
+        </div>
+      </div>
 
-        <h2 class="section-title">Donate Now</h2>
+      <button type="submit" class="submit-btn">Submit Donation</button>
+    </form>
+  </div>
 
-        <form id="donationForm">
-            <div class="form-group">
-                <label for="firstName">First Name <span class="required">*</span></label>
-                <input type="text" id="firstName" name="firstName" required>
-            </div>
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
 
-            <div class="form-group">
-                <label for="lastName">Last Name <span class="required">*</span></label>
-                <input type="text" id="lastName" name="lastName" required>
-            </div>
+  <script>
+    // Load Header (path fix)
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
 
-            <div class="form-group">
-                <label for="email">Email <span class="required">*</span></label>
-                <input type="email" id="email" name="email" required>
-            </div>
+        // Dropdown behavior
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => (dropdownMenu.style.display = "block"));
+          dropdown.addEventListener("mouseleave", () => (dropdownMenu.style.display = "none"));
+        }
 
-            <div class="form-group">
-                <label for="address">Address <span class="required">*</span></label>
-                <input type="text" id="address" name="address" required>
-            </div>
-
-            <div class="form-group">
-                <label>Donation Amount <span class="required">*</span></label>
-                <div class="donation-amounts">
-                    <div class="amount-option" data-amount="25">$25</div>
-                    <div class="amount-option" data-amount="50">$50</div>
-                    <div class="amount-option" data-amount="100">$100</div>
-                </div>
-                <div class="custom-amount">
-                    
-                    <input type="number" id="customAmount" name="customAmount" placeholder="Custom Amount" min="1">
-                </div>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit Donation</button>
-        </form>
-    </div>
-    <script>
-
-        const dropdown = document.getElementById('aboutDropdown');
-        const dropdownMenu = document.getElementById('dropdownMenu');
-
-        dropdown.addEventListener('mouseenter', function() {
-            dropdownMenu.style.display = 'block';
+        // Highlight active link
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) link.classList.add("active");
         });
+      });
 
-        dropdown.addEventListener('mouseleave', function() {
-            dropdownMenu.style.display = 'none';
-        });
-        const amountOptions = document.querySelectorAll('.amount-option');
-        const customAmountInput = document.getElementById('customAmount');
-        let selectedAmount = null;
+    // Load Footer (path fix)
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
 
-        amountOptions.forEach(option => {
-            option.addEventListener('click', function() {
-                amountOptions.forEach(opt => opt.classList.remove('selected'));
-                this.classList.add('selected');
-                selectedAmount = this.dataset.amount;
-                customAmountInput.value = '';
-            });
-        });
+    // Donation form logic
+    const amountOptions = document.querySelectorAll(".amount-option");
+    const customAmountInput = document.getElementById("customAmount");
+    let selectedAmount = null;
 
-        customAmountInput.addEventListener('input', function() {
-            if (this.value) {
-                amountOptions.forEach(opt => opt.classList.remove('selected'));
-                selectedAmount = this.value;
-            }
-        });
+    amountOptions.forEach(option => {
+      option.addEventListener("click", function () {
+        amountOptions.forEach(opt => opt.classList.remove("selected"));
+        this.classList.add("selected");
+        selectedAmount = this.dataset.amount;
+        customAmountInput.value = "";
+      });
+    });
 
-        document.getElementById('donationForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    customAmountInput.addEventListener("input", function () {
+      if (this.value) {
+        amountOptions.forEach(opt => opt.classList.remove("selected"));
+        selectedAmount = this.value;
+      }
+    });
 
-            if (!selectedAmount && !customAmountInput.value) {
-                alert('Please select or enter a donation amount.');
-                return;
-            }
-
-            // Redirect to payment page
-            window.location.href = "payment.html";
-         });
-
-    </script>
+    document.getElementById("donationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!selectedAmount && !customAmountInput.value) {
+        alert("Please select or enter a donation amount.");
+        return;
+      }
+      alert("Thank you for supporting NAFN! ❤️");
+    });
+  </script>
 </body>
 </html>

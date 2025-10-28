@@ -137,189 +137,43 @@
       line-height: 1.6;
     }
 
-    /* Statistics Section */
-    .stats-section {
-      background: white;
-      padding: 60px 20px;
-    }
-
-    .stats-section h2 {
-      text-align: center;
-      font-size: 36px;
-      color: #333;
-      margin-bottom: 50px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .stat-card {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .stat-card img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 10px;
-      margin-bottom: 20px;
-    }
-
-    .stat-card p {
+    .mission-button {
+      display: inline-block;
+      background: #91AA91;
+      color: white;
+      padding: 12px 30px;
       font-size: 16px;
-      line-height: 1.6;
-      color: #555;
-      font-weight: 500;
-    }
-
-    /* Donation Section */
-    .donation-section {
-      background: linear-gradient(135deg, #7a9979 0%, #91AA91 100%);
-      padding: 80px 20px;
-      text-align: center;
-      color: white;
-    }
-
-    .donation-section h2 {
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
-
-    .donation-content {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 60px;
-      max-width: 1000px;
-      margin: 0 auto;
-      flex-wrap: wrap;
-    }
-
-    .donation-image {
-      flex: 0 0 400px;
-    }
-
-    .donation-image img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .donation-info {
-      flex: 1;
-      text-align: left;
-      min-width: 300px;
-    }
-
-    .donation-info p {
-      font-size: 18px;
-      line-height: 1.8;
-      margin-bottom: 30px;
-    }
-
-    /* Footer */
-    .footer {
-      background: #2c3e50;
-      padding: 40px 20px;
-      text-align: center;
-      color: white;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 25px;
       margin-top: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
-    .social-links img {
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .social-links img:hover {
-      transform: scale(1.2);
+    .mission-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      background: #7a9979;
     }
 
     @media (max-width: 768px) {
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .welcome-content {
-        flex-direction: column;
-      }
-
-      .welcome-image {
-        flex: 1 1 100%;
-      }
-
-      .donation-content {
-        flex-direction: column;
-      }
-
-      .donation-image {
-        flex: 1 1 100%;
-      }
-      .mission-button {
-  display: inline-block;
-  background: #91AA91;
-  color: white;
-  padding: 12px 30px;
-  font-size: 16px;
-  font-weight: bold;
-  text-decoration: none;
-  border-radius: 25px;
-  margin-top: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.mission-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-  background: #7a9979;
-}
+      .hero h1 { font-size: 32px; }
+      .welcome-content { flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <div class="logo">
-        <h2>NAFN</h2>
-      </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li class="dropdown" id="aboutDropdown">
-            <a href="#">About Us</a>
-            <ul class="dropdown-menu" id="dropdownMenu">
-              <li><a href="about-story.html">Our Story</a></li>
-              <li><a href="about-board.html">Meet the Board</a></li>
-            </ul>
-          </li>
-          <li><a href="why-nafn.html">Why NAFN?</a></li>
-          <li><a href="foster.html">Foster Now</a></li>
-          <li><a href="volunteer.html">Volunteer Today</a></li>
-          <li><a href="donate.html">Donate</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
 
   <section class="hero">
-    <h1>Mission statement</h1>
+    <h1>Mission Statement</h1>
+    <p>Together, we provide care, compassion, and hope for those who need it most—both humans and their animals.</p>
     <div>
       <a href="foster.html" class="cta-button">Become a Foster</a>
       <a href="donate.html" class="cta-button">Donate Now</a>
-      <a href="about-story.html" class="cta-button">Learn more</a>
+      <a href="about-story.html" class="cta-button">Learn More</a>
     </div>
   </section>
 
@@ -331,7 +185,10 @@
       <div class="welcome-text">
         <h2>Welcome</h2>
         <p>
-          We're excited to share that Paws N Claws for the Cause is coming soon to Colorado, however the need is more dire than just Colorado, so we are changing our name and initial mission. We are in the first phase of changing to N.A.F.N, National Animal Foster Network. Starting in September 2025, we will be working with the Colorado Univeristies talented Computer Science students to develop a mobile app that will be the one stop shop for humans in crisis who need medical, mental health, drug & alcohol treatment, fleeing from domestic violence, the aging population, unhoused, temporary incarceration, and those experiencing natural disasters. Our new mission will allow for those in crisis to seek the temporary care needed for their companion animals, no matter what species, and minimize the surrender rate to shelters and provide a life saving solution to those who only know what unconditional love is because of their companions. Hermit crabs, snakes, birds, "you get the point." Since there are significant changes to FEMA, our app will provide resources to assist with relocation of  animals impacted by a natural disasters and provide temporary care to those impacted with the end goal of reunifying those animals with their families once they  reestablish their home.How can you help?  Spread the word, sign up to foster, network in your area to gain the support of resource supplies, veterinarian care, microchipping, training, ESA and service animal designations for these companion animals, donate, volunteer, and crowdfunding.Together, we can reduce the over population rates of shelters and sancturaries by fifty percent and the euthanisia rate by thirty percent by the end of year five. THIS IS HUGE!!
+          We're excited to share that Paws N Claws for the Cause is evolving into the National Animal Foster Network (N.A.F.N). Our mission extends beyond Colorado—reaching individuals across the nation facing crisis who need temporary care for their companion animals.
+        </p>
+        <p>
+          Partnering with talented computer science students at Colorado universities, we are developing a mobile app launching in 2025 to connect individuals in crisis with vetted foster caregivers. Together, we aim to reduce shelter overcrowding and euthanasia rates nationwide.
         </p>
       </div>
     </div>
@@ -343,35 +200,49 @@
       <div class="mission-card">
         <h3>VOLUNTEER: FOSTER A PET</h3>
         <p>
-          Our pet fostering program is committed to ensuring that pets are placed in safe and loving environments while their owners get the help they need. We believe that by offering temporary care for pets, we can alleviate stress for owners needing support in difficult circumstances.
+          Our foster program ensures pets stay safe and loved while their owners get the help they need. By fostering, you directly support both human and animal well-being.
         </p>
         <a href="volunteer.html" class="mission-button">Volunteer Today</a>
       </div>
       <div class="mission-card">
         <h3>COMMUNITY SUPPORT</h3>
         <p>
-          All our efforts are focused on sourcing and providing the best care for pets in need within the US. We work closely with local communities to create a network of support for both pets and their owners.
+          We partner with communities across the U.S. to create a nationwide support network for both pets and their owners in times of need.
         </p>
         <a href="donate.html" class="mission-button">Donate Now</a>
       </div>
     </div>
   </section>
 
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
+
   <script>
-    // Get the dropdown elements
-    const dropdown = document.getElementById('aboutDropdown');
-    const dropdownMenu = document.getElementById('dropdownMenu');
+    // Load Header
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
 
-    // Show dropdown on mouse enter
-    dropdown.addEventListener('mouseenter', function() {
-      dropdownMenu.style.display = 'block';
-    });
+        // Dropdown hover
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => dropdownMenu.style.display = "block");
+          dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
+        }
 
-    // Hide dropdown on mouse leave
-    dropdown.addEventListener('mouseleave', function() {
-      dropdownMenu.style.display = 'none';
-    });
+        // Highlight current page link
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) link.classList.add("active");
+        });
+      });
+
+    // Load Footer
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
   </script>
-
 </body>
 </html>

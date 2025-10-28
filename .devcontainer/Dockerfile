@@ -1,5 +1,10 @@
 # Use official Node.js image
-FROM node:20
+FROM python:3.12
+# FROM node:20
+
+
+#install packages
+RUN  apt-get update && apt-get -y install git 
 
 # Set working directory
 WORKDIR /app
@@ -11,6 +16,10 @@ RUN npm install
 # Copy source code
 COPY . .
 
+RUN npm run build 
+
 # Expose port and start app
+CMD ["npm", "run", "dev"]
+
 EXPOSE 3000
-CMD ["node", "server.js"]
+

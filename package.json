@@ -1,9 +1,19 @@
 {
   "name": "national-animal-foster-network",
-  "version": "1.0.0",
-  "description": "Run `docker-compose up` to run the code locally. It should create separate containers for the app and the database.",
-  "main": "script.js",
+  "version": "1.0.1",
+  "private":"true",
+  // "description": "Run `docker-compose up` to run the code locally. It should create separate containers for the app and the database.",
+  // "main": "script.js",
   "scripts": {
+    "frontend:dev": "",
+    "frontend:build": "",
+
+    "backend:dev": "",
+    "backend:start": "",
+
+    "dev": "npm run dev",
+    "build": "",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +28,7 @@
   "homepage": "https://github.com/NAFN-Capstone/national-animal-foster-network#readme",
   "dependencies": {
     "express": "^5.1.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "python": "^3.13.7"
   }
 }

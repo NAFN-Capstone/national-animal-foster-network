@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foster - NAFN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- NAVBAR -->
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <h2>NAFN</h2>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li class="dropdown" id="aboutDropdown">
+            <a href="#">About Us</a>
+            <ul class="dropdown-menu" id="dropdownMenu">
+              <li><a href="/about-us">Our Story</a></li>
+              <li><a href="/board-members">Meet the Board</a></li>
+            </ul>
+          </li>
+          <li><a href="/why-nafn">Why NAFN?</a></li>
+          <li><a href="/foster-with-us">Foster Now</a></li>
+          <li><a href="/volunteer-with-us">Volunteer Today</a></li>
+          <li><a href="/donate">Donate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <!-- MAIN CONTENT SECTION -->
+    <section style="background: #91AA91; padding: 60px 0;">
+        <div style="max-width: 1100px; margin: 0 auto; background: white; padding: 40px; display: flex; gap: 40px;">
+
+            <!-- CAROUSEL -->
+            <div class="carousel-container" style="flex: 1;">
+                <div class="carousel-slide active">
+                    <img src="{{ url_for('static', filename='pictures/foster/foster-temp.png') }}" alt="Volunteer 1">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='pictures/foster/foster-temp.png') }}" alt="Volunteer 2">
+                </div>
+                <div class="carousel-slide">
+                    <img src="{{ url_for('static', filename='pictures/foster/foster-temp.png') }}" alt="Volunteer 3">
+                </div>
+
+                <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
+
+                <div class="carousel-dots">
+                    <span class="dot active" onclick="goToSlide(0)"></span>
+                    <span class="dot" onclick="goToSlide(1)"></span>
+                    <span class="dot" onclick="goToSlide(2)"></span>
+                </div>
+            </div>
+
+            <div style="flex: 1;">
+                <p>
+                    Every day, people facing medical challenges, mental health struggles, addiction recovery,
+                    and domestic violence must make heartbreaking choices about their beloved pets. For many,
+                    the fear of losing their furry companions becomes a barrier to seeking the help they
+                    desperately need. That’s where you come in.
+                </p>
+                <p>
+                    By becoming a foster family, you offer more than just shelter—you provide hope, stability,
+                    and love to animals whose owners are on a journey to heal and rebuild their lives.
+                    Your kindness ensures that no one has to choose between getting help and keeping their pet safe.
+                </p>
+                <p>
+                    These animals need a temporary home, and their owners need the peace of mind that their
+                    cherished companions are in caring hands. Whether it’s for a few weeks or a few months,
+                    your compassion can change lives—both human and animal.
+                </p>
+                <p>
+                    Join us in making a difference. Sign up today to become a foster family and be the bridge
+                    between hardship and healing. Because no one should have to face life’s toughest battles
+                    alone—not people, and not their pets.
+                </p>
+
+                <!-- BUTTON -->
+                <div style="text-align: center; margin-top: 30px;">
+                    <a href="#" style="background:#2c3e50; color:white; padding:15px 40px; text-decoration:none; border-radius:5px;">
+                        Foster Today
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="nafn-footer">
+        <div class="footer-content">
+            <a href="#"><img src="{{ url_for('static', filename='pictures/facebook.webp') }}" alt="Facebook" class="footer-icon"></a>
+            <a href="#"><img src="{{ url_for('static', filename='pictures/tiktok.webp') }}" alt="TikTok" class="footer-icon"></a>
+            <a href="#"><img src="{{ url_for('static', filename='pictures/insta.webp') }}" alt="Instagram" class="footer-icon"></a>
+        </div>
+    </footer>
+
+    <script>
+        const dropdown = document.getElementById('aboutDropdown');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdown.addEventListener('mouseenter', function() {
+            dropdownMenu.style.display = 'block';
+        });
+
+        dropdown.addEventListener('mouseleave', function() {
+            dropdownMenu.style.display = 'none';
+        });
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.dot');
+
+    function showSlide(n) {
+        if (n >= slides.length) currentSlide = 0;
+        if (n < 0) currentSlide = slides.length - 1;
+        
+        slides.forEach(slide => slide.style.display = 'none');
+        dots.forEach(dot => dot.classList.remove('active'));
+
+        slides[currentSlide].style.display = 'block';
+        dots[currentSlide].classList.add('active');
+    }
+
+    function changeSlide(n) {
+        currentSlide += n;
+        showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+        currentSlide = n;
+        showSlide(currentSlide);
+    }
+
+    showSlide(currentSlide);
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Our Story</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="main-header">
+    <div class="container">
+      <div class="logo">
+        <h2>NAFN</h2>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="/" class="active">Home</a></li>
+          <li class="dropdown" id="aboutDropdown">
+            <a href="#">About Us</a>
+            <ul class="dropdown-menu" id="dropdownMenu">
+              <li><a href="/about-us">Our Story</a></li>
+              <li><a href="/board-members">Meet the Board</a></li>
+            </ul>
+          </li>
+          <li><a href="/why-nafn">Why NAFN?</a></li>
+          <li><a href="/foster-with-us">Foster Now</a></li>
+          <li><a href="/volunteer-with-us">Volunteer Today</a></li>
+          <li><a href="/donate">Donate</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+    <section class="about-wrapper" style="background: #91AA91; padding: 50px 0;">
+        <div class="about-container" style="max-width: 1000px; margin: 0 auto; display: flex; gap: 40px; background: none; border: none;">
+            
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='pictures/about-us.png') }}" alt="NAFN Mission" style="width: 400px;">
+            </div>
+
+            <div class="about-content" style="flex: 1;">
+                <h1 style="text-align: center; margin-bottom: 20px; font-size: 32px; border-bottom: 2px solid #333; display: inline-block;">Our Story</h1>
+
+                <p>
+                    For many individuals facing crises, the inability to secure care for their pets becomes a significant
+                    barrier to seeking essential services, including medical treatment, mental health care, substance abuse
+                    rehabilitation, and escape from domestic violence.
+                </p>
+
+                <p>
+                    The National Animal Foster Network was founded to bridge this gap. Through emergency pet fostering,
+                    financial assistance, and partnerships with shelters and healthcare providers, we provide a
+                    comprehensive, sustainable solution to keep pets and people together during times of crisis.
+                </p>
+
+                <p>
+                    With the support of grant funding, we can expand our reach, develop critical resources, and create
+                    lasting change—ensuring that no one is forced to compromise their safety or health due to lack of pet care.
+                    Your investment in this mission directly impacts both human and animal lives, fostering stronger, healthier communities.
+                </p>
+
+                <p style="text-align: center; font-style: italic;">(Text from original website)</p>
+            </div>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px;">
+        <img src="{{ url_for('static', filename='pictures/facebook.webp') }}" alt="Facebook" style="width: 40px; margin: 0 10px;">
+        <img src="{{ url_for('static', filename='pictures/tiktok.webp') }}" alt="TikTok" style="width: 40px; margin: 0 10px;">
+        <img src="{{ url_for('static', filename='pictures/insta.webp') }}" alt="Instagram" style="width: 40px; margin: 0 10px;">
+    </footer>
+
+    <script>
+        const dropdown = document.getElementById('aboutDropdown');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        dropdown.addEventListener('mouseenter', function() {
+            dropdownMenu.style.display = 'block';
+        });
+
+        dropdown.addEventListener('mouseleave', function() {
+            dropdownMenu.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>

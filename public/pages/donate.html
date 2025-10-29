@@ -208,63 +208,72 @@
   <div id="footer-placeholder"></div>
 
   <script>
-    // Load Header (path fix)
-    fetch("./header.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("header-placeholder").innerHTML = data;
+  // Load Header (path fix)
+  fetch("./header.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("header-placeholder").innerHTML = data;
 
-        // Dropdown behavior
-        const dropdown = document.getElementById("aboutDropdown");
-        const dropdownMenu = document.getElementById("dropdownMenu");
-        if (dropdown && dropdownMenu) {
-          dropdown.addEventListener("mouseenter", () => (dropdownMenu.style.display = "block"));
-          dropdown.addEventListener("mouseleave", () => (dropdownMenu.style.display = "none"));
-        }
-
-        // Highlight active link
-        const currentPage = window.location.pathname.split("/").pop();
-        document.querySelectorAll(".main-nav a").forEach(link => {
-          if (link.getAttribute("href") === currentPage) link.classList.add("active");
-        });
-      });
-
-    // Load Footer (path fix)
-    fetch("./footer.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-
-    // Donation form logic
-    const amountOptions = document.querySelectorAll(".amount-option");
-    const customAmountInput = document.getElementById("customAmount");
-    let selectedAmount = null;
-
-    amountOptions.forEach(option => {
-      option.addEventListener("click", function () {
-        amountOptions.forEach(opt => opt.classList.remove("selected"));
-        this.classList.add("selected");
-        selectedAmount = this.dataset.amount;
-        customAmountInput.value = "";
-      });
-    });
-
-    customAmountInput.addEventListener("input", function () {
-      if (this.value) {
-        amountOptions.forEach(opt => opt.classList.remove("selected"));
-        selectedAmount = this.value;
+      // Dropdown behavior
+      const dropdown = document.getElementById("aboutDropdown");
+      const dropdownMenu = document.getElementById("dropdownMenu");
+      if (dropdown && dropdownMenu) {
+        dropdown.addEventListener("mouseenter", () => (dropdownMenu.style.display = "block"));
+        dropdown.addEventListener("mouseleave", () => (dropdownMenu.style.display = "none"));
       }
+
+      // Highlight active link
+      const currentPage = window.location.pathname.split("/").pop();
+      document.querySelectorAll(".main-nav a").forEach(link => {
+        if (link.getAttribute("href") === currentPage) link.classList.add("active");
+      });
     });
 
-    document.getElementById("donationForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-      if (!selectedAmount && !customAmountInput.value) {
-        alert("Please select or enter a donation amount.");
-        return;
-      }
-      alert("Thank you for supporting NAFN! ❤️");
+  // Load Footer (path fix)
+  fetch("./footer.html")
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById("footer-placeholder").innerHTML = data;
     });
-  </script>
+
+  // Donation form logic
+  const amountOptions = document.querySelectorAll(".amount-option");
+  const customAmountInput = document.getElementById("customAmount");
+  let selectedAmount = null;
+
+  amountOptions.forEach(option => {
+    option.addEventListener("click", function () {
+      amountOptions.forEach(opt => opt.classList.remove("selected"));
+      this.classList.add("selected");
+      selectedAmount = this.dataset.amount;
+      customAmountInput.value = "";
+    });
+  });
+
+  customAmountInput.addEventListener("input", function () {
+    if (this.value) {
+      amountOptions.forEach(opt => opt.classList.remove("selected"));
+      selectedAmount = this.value;
+    }
+  });
+
+  document.getElementById("donationForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    if (!selectedAmount && !customAmountInput.value) {
+      alert("Please select or enter a donation amount.");
+      return;
+    }
+    
+    // Get the final amount
+    const finalAmount = selectedAmount || customAmountInput.value;
+    
+    // Store in sessionStorage
+    sessionStorage.setItem('donationAmount', finalAmount);
+    
+    // Redirect to checkout
+    window.location.href = 'checkout.html';
+  });
+</script>
 </body>
+
 </html>

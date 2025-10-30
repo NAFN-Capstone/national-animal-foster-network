@@ -1,0 +1,3 @@
+# Requirements for running the Flask server in src/routes/script.py
+Flask==2.3.2
+

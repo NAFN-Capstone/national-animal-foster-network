@@ -1,25 +1,29 @@
 # Use official Node.js image
-FROM python:3.12
+FROM python:latest
 # FROM node:20
 
-
 #install packages
-RUN  apt-get update && apt-get -y install git 
+# RUN  apt-get update && apt-get -y install git 
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files and install dependencies
-COPY package*.json ./
-RUN npm install
-
 # Copy source code
 COPY . .
 
-RUN npm run build 
+# Copy package files and install dependencies
+# COPY package*.json ./
+RUN pip install -r requirements.txt
 
-# Expose port and start app
-CMD ["npm", "run", "dev"]
+
+WORKDIR /src/routes
 
 EXPOSE 3000
+
+# RUN python script.py
+CMD ["python", "server.py"]
+
+# Expose port and start app
+# CMD ["npm", "run", "dev"]
+
 

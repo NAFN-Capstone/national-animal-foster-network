@@ -1,5 +1,7 @@
 # Use official Node.js image
-FROM python:latest
+# Use a stable Python minor release (3.11) to avoid incompatibilities with packages
+# that may call deprecated stdlib APIs removed in later Python versions.
+FROM python:3.11-slim
 # FROM node:20
 
 #install packages
@@ -11,19 +13,28 @@ WORKDIR /app
 # Copy source code
 COPY . .
 
-# Copy package files and install dependencies
-# COPY package*.json ./
-RUN pip install -r requirements.txt
+# Upgrade pip and setuptools first (helps avoid older setuptools/importlib bugs)
+RUN python -m pip install --upgrade pip setuptools wheel \
+	&& if [ -f requirements.txt ]; then pip install --no-cache-dir -r requirements.txt; fi
+
+# Install curl so the HEALTHCHECK can probe the Flask endpoint
+RUN apt-get update \
+	&& apt-get install -y --no-install-recommends curl \
+	&& rm -rf /var/lib/apt/lists/*
 
 
-WORKDIR /src/routes
+# Switch to the directory that contains the Flask app inside the copied /app tree
+# The repository was copied into /app, so the script lives at /app/src/routes
+WORKDIR /app/src/routes
 
 EXPOSE 3000
 
-# RUN python script.py
-CMD ["python", "server.py"]
+# Healthcheck: probe the root URL. If curl returns non-2xx, the container is unhealthy.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+	CMD curl -fsS http://localhost:3000/ || exit 1
 
-# Expose port and start app
-# CMD ["npm", "run", "dev"]
+# RUN python server from script.py
+CMD ["python", "script.py"]
+
 
 

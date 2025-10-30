@@ -16,3 +16,12 @@ Follow the conventional commit messages: https://www.conventionalcommits.org/en/
 2) docker build -f .devcontainer\Dockerfile -t dev-nafn:latest .
 3) docker container create dev-nafn
 
+### Dev Environment
+
+## Build with Docker
+1) Ensure you are in the root directory of the project
+2) docker build -f .devcontainer\Dockerfile -t dev-nafn:latest .
+3) docker container create dev-nafn
+
+## Use Docker Container
+1) 

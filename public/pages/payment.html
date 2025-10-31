@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment - Supporting Pets and Owners</title>
+  <link rel="stylesheet" href="../style.css" />
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #91AA91;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment-container {
+      max-width: 1200px;
+      margin: 80px auto;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 1fr 400px;
+      gap: 30px;
+      flex: 1;
+    }
+
+    .payment-section {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .order-summary {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      height: fit-content;
+    }
+
+    h1 {
+      color: #333;
+      font-size: 32px;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 24px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+
+    h3 {
+      color: #333;
+      font-size: 20px;
+      margin-bottom: 20px;
+      font-weight: 600;
+      margin-top: 30px;
+    }
+
+    .customer-info {
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .info-row {
+      padding: 5px 0;
+      color: #555;
+      font-size: 15px;
+    }
+
+    .info-label {
+      font-weight: 500;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      color: #333;
+      font-weight: 500;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    input[type="text"],
+    input[type="tel"],
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 15px;
+      transition: border-color 0.3s;
+    }
+
+    input[type="text"]:focus,
+    input[type="tel"]:focus,
+    select:focus {
+      outline: none;
+      border-color: #91AA91;
+    }
+
+    .required {
+      color: #e74c3c;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 12px 0;
+      color: #555;
+      font-size: 16px;
+    }
+
+    .summary-row.total {
+      border-top: 2px solid #e0e0e0;
+      margin-top: 15px;
+      padding-top: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .summary-row.donation {
+      font-size: 18px;
+      font-weight: 500;
+      color: #333;
+    }
+
+    .place-order-btn {
+      width: 100%;
+      padding: 16px;
+      background: #91AA91;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      margin-top: 30px;
+    }
+
+    .place-order-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(145, 170, 145, 0.4);
+    }
+
+    .place-order-btn:active {
+      transform: translateY(0);
+    }
+
+    .site-footer {
+      margin-top: auto;
+    }
+
+    @media (max-width: 968px) {
+      .payment-container {
+        grid-template-columns: 1fr;
+      }
+
+      .order-summary {
+        order: -1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
+
+  <div class="payment-container">
+    <div class="payment-section">
+      <h1>Payment</h1>
+
+      <h2>Customer Details</h2>
+      <div class="customer-info" id="customerInfo">
+        <div class="info-row"><span class="info-label">Email:</span> <span id="customerEmail"></span></div>
+        <div class="info-row"><span class="info-label">Name:</span> <span id="customerName"></span></div>
+        <div class="info-row"><span class="info-label">Phone:</span> <span id="customerPhone"></span></div>
+      </div>
+
+      <h3>Billing Address</h3>
+      <form id="paymentForm">
+        <div class="form-group">
+          <label for="billingFirstName">First Name <span class="required">*</span></label>
+          <input type="text" id="billingFirstName" name="billingFirstName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="billingLastName">Last Name <span class="required">*</span></label>
+          <input type="text" id="billingLastName" name="billingLastName" required />
+        </div>
+
+        <div class="form-group">
+          <label for="billingPhone">Phone <span class="required">*</span></label>
+          <input type="tel" id="billingPhone" name="billingPhone" required />
+        </div>
+
+        <div class="form-group">
+          <label for="country">Country/Region <span class="required">*</span></label>
+          <select id="country" name="country" required>
+            <option value="">Select Country</option>
+            <option value="US">United States</option>
+            <option value="CA">Canada</option>
+            <option value="MX">Mexico</option>
+            <option value="GB">United Kingdom</option>
+            <option value="AU">Australia</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="address">Address <span class="required">*</span></label>
+          <input type="text" id="address" name="address" required />
+        </div>
+
+        <div class="form-group">
+          <label for="city">City <span class="required">*</span></label>
+          <input type="text" id="city" name="city" required />
+        </div>
+
+        <div class="form-group">
+          <label for="zipCode">Zip/Postal Code <span class="required">*</span></label>
+          <input type="text" id="zipCode" name="zipCode" required />
+        </div>
+        <h3>Payment Information</h3>
+  
+        <div class="form-group">
+            <label for="cardName">Cardholder Name <span class="required">*</span></label>
+            <input type="text" id="cardName" name="cardName" required />
+        </div>
+
+        <div class="form-group">
+            <label for="cardNumber">Card Number <span class="required">*</span></label>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="XXXX XXXX XXXX XXXX" maxlength="19" required />
+        </div>
+
+        <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div>
+            <label for="expiryDate">Expiration <span class="required">*</span></label>
+            <input type="text" id="expiryDate" name="expiryDate" placeholder="MM/YY" maxlength="5" required />
+            </div>
+            <div>
+            <label for="cvv">CVV <span class="required">*</span></label>
+            <input type="text" id="cvv" name="cvv" placeholder="XXX" maxlength="4" required />
+            </div>
+        </div>
+        <h3>Review & Place Order</h3>
+        <button type="submit" class="place-order-btn">Place Order and Pay</button>
+      </form>
+    </div>
+
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      
+      <div class="summary-row donation">
+        <span>Donation Amount:</span>
+        <span id="donationAmount">$0.00</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Subtotal:</span>
+        <span id="subtotal">$0.00</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Sales Tax:</span>
+        <span id="salesTax">$0.00</span>
+      </div>
+
+      <div class="summary-row total">
+        <span>Total:</span>
+        <span id="total">$0.00</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Load Header
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => (dropdownMenu.style.display = "block"));
+          dropdown.addEventListener("mouseleave", () => (dropdownMenu.style.display = "none"));
+        }
+
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) link.classList.add("active");
+        });
+      });
+
+    // Load Footer
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+
+    // Get customer data from sessionStorage
+    const customerData = JSON.parse(sessionStorage.getItem('customerData'));
+
+    if (customerData) {
+      // Update customer info display
+      document.getElementById('customerEmail').textContent = customerData.email;
+      document.getElementById('customerName').textContent = `${customerData.firstName} ${customerData.lastName}`;
+      document.getElementById('customerPhone').textContent = customerData.phone;
+
+      // Update order summary
+      document.getElementById('donationAmount').textContent = `$${customerData.donationAmount.toFixed(2)}`;
+      document.getElementById('subtotal').textContent = `$${customerData.subtotal.toFixed(2)}`;
+      document.getElementById('salesTax').textContent = `$${customerData.salesTax.toFixed(2)}`;
+      document.getElementById('total').textContent = `$${customerData.total.toFixed(2)}`;
+    }
+
+    // Handle form submission
+    document.getElementById('paymentForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Thank you for your donation! Your order has been placed. ");
+      
+      // Clear the stored data after successful submission
+      sessionStorage.removeItem('donationAmount');
+      sessionStorage.removeItem('customerData');
+    });
+    // Card number formatting
+    document.getElementById('cardNumber').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\s/g, '');
+    let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+    e.target.value = formattedValue;
+    });
+
+    // Expiry date formatting
+    document.getElementById('expiryDate').addEventListener('input', function(e) {
+    let value = e.target.value.replace(/\D/g, '');
+    if (value.length >= 2) {
+        value = value.slice(0, 2) + '/' + value.slice(2, 4);
+    }
+    e.target.value = value;
+    });
+
+    // CVV - only numbers
+    document.getElementById('cvv').addEventListener('input', function(e) {
+    e.target.value = e.target.value.replace(/\D/g, '');
+    });
+  </script>
+</body>
+</html>

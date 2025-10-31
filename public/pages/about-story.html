@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Our Story!</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
+
+  <!-- MAIN -->
+  <section class="about-wrapper">
+  <div class="about-container">
+    <div class="about-image">
+      <img src="../pictures/about-us.png" alt="NAFN Mission" />
+    </div>
+
+    <div class="about-content">
+      <h1>Our Story</h1>
+
+      <p>
+        For many individuals facing crises, the inability to secure care for their pets becomes a significant
+        barrier to seeking essential services, including medical treatment, mental health care, substance abuse
+        rehabilitation, and escape from domestic violence.
+      </p>
+
+      <p>
+        The National Animal Foster Network was founded to bridge this gap. Through emergency pet fostering,
+        financial assistance, and partnerships with shelters and healthcare providers, we provide a
+        comprehensive, sustainable solution to keep pets and people together during times of crisis.
+      </p>
+
+      <p>
+        With the support of grant funding, we can expand our reach, develop critical resources, and create
+        lasting change—ensuring that no one is forced to compromise their safety or health due to lack of pet care.
+        Your investment in this mission directly impacts both human and animal lives, fostering stronger, healthier communities.
+      </p>
+
+      <p class="about-note">(Text from original website)</p>
+    </div>
+  </div>
+</section>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- HEADER + FOOTER LOADING -->
+  <script>
+    // Load Header
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        // Reattach dropdown hover behavior after header loads
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => (dropdownMenu.style.display = "block"));
+          dropdown.addEventListener("mouseleave", () => (dropdownMenu.style.display = "none"));
+        }
+
+        // Highlight the active page automatically
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+    // Load Footer
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+</body>
+</html>

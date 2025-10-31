@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why NAFN - NAFN</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      background: #91AA91;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    section {
+      flex: 1;
+      padding: 60px 0;
+    }
+
+    .why-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .why-container img {
+      width: 70%;
+      border-radius: 5px;
+      margin-bottom: 30px;
+    }
+
+    .why-container h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #2c3e50;
+    }
+
+    .why-container p {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #444;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
+
+  <!-- MAIN SECTION -->
+  <section>
+    <div class="why-container">
+      <img src="../pictures/why-nafn-temp.png" alt="Volunteer Team" />
+      <h1>Why NAFN?</h1>
+      <p>
+        At the National Animal Foster Network, we believe no one should have to choose between their well-being and their beloved companion.
+        Many individuals facing medical crises, mental health challenges, addiction recovery, or domestic violence are forced to give up their pets
+        just to receive the care they need. This is a heartbreaking choice no one should ever face.
+      </p>
+      <p>
+        NAFN exists to bridge that gap. We provide temporary foster care, support services, and hope — ensuring people can seek help
+        while knowing their animals are safe, loved, and waiting for their return. We are not just protecting animals; we are protecting families,
+        dignity, and healing.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
+
+  <!-- HEADER & FOOTER SCRIPTS -->
+  <script>
+    // Load shared header
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        // Dropdown hover functionality
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => dropdownMenu.style.display = "block");
+          dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
+        }
+
+        // Highlight active link
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) {
+            link.classList.add("active");
+          }
+        });
+      });
+
+    // Load shared footer
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
+</body>
+</html>

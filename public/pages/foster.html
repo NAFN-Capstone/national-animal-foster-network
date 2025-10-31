@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foster - NAFN</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #91AA91;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Foster Section */
+    .foster-section {
+      padding: 60px 20px;
+      background: #91AA91;
+    }
+
+    .foster-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .carousel-container {
+      position: relative;
+      flex: 1;
+      max-width: 500px;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .carousel-slide {
+      display: none;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+      object-fit: cover;
+    }
+
+    .carousel-slide.active {
+      display: block;
+    }
+
+    /* Carousel buttons */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #ffffffaa;
+      border: 2px solid #91AA91;
+      color: #333;
+      font-size: 22px;
+      font-weight: bold;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .carousel-btn:hover {
+      background: #91AA91;
+      color: white;
+      transform: translateY(-50%) scale(1.1);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    .carousel-dots {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .dot {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      margin: 0 5px;
+      background: #ccc;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: #333;
+    }
+
+    /* Text content */
+    .foster-text {
+      flex: 1;
+      min-width: 300px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .foster-text p {
+      margin-bottom: 15px;
+    }
+
+    .foster-btn {
+      display: inline-block;
+      background: #2c3e50;
+      color: white;
+      padding: 15px 40px;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .foster-btn:hover {
+      background: #1a242f;
+    }
+
+    @media (max-width: 900px) {
+      .foster-container {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER PLACEHOLDER -->
+  <div id="header-placeholder"></div>
+
+  <!-- MAIN CONTENT SECTION -->
+  <section class="foster-section">
+    <div class="foster-container">
+      <!-- CAROUSEL -->
+      <div class="carousel-container">
+        <div class="carousel-slide active">
+          <img src="../pictures/foster/foster-temp.png" alt="Volunteer 1">
+        </div>
+        <div class="carousel-slide">
+          <img src="../pictures/foster/foster-temp.png" alt="Volunteer 2">
+        </div>
+        <div class="carousel-slide">
+          <img src="../pictures/foster/foster-temp.png" alt="Volunteer 3">
+        </div>
+
+        <button class="carousel-btn prev" onclick="changeSlide(-1)">&#10094;</button>
+        <button class="carousel-btn next" onclick="changeSlide(1)">&#10095;</button>
+
+        <div class="carousel-dots">
+          <span class="dot active" onclick="goToSlide(0)"></span>
+          <span class="dot" onclick="goToSlide(1)"></span>
+          <span class="dot" onclick="goToSlide(2)"></span>
+        </div>
+      </div>
+
+      <!-- TEXT SECTION -->
+      <div class="foster-text">
+        <p>
+          Every day, people facing medical challenges, mental health struggles, addiction recovery,
+          and domestic violence must make heartbreaking choices about their beloved pets. For many,
+          the fear of losing their furry companions becomes a barrier to seeking the help they
+          desperately need. That’s where you come in.
+        </p>
+        <p>
+          By becoming a foster family, you offer more than just shelter—you provide hope, stability,
+          and love to animals whose owners are on a journey to heal and rebuild their lives.
+          Your kindness ensures that no one has to choose between getting help and keeping their pet safe.
+        </p>
+        <p>
+          These animals need a temporary home, and their owners need the peace of mind that their
+          cherished companions are in caring hands. Whether it’s for a few weeks or a few months,
+          your compassion can change lives—both human and animal.
+        </p>
+        <p>
+          Join us in making a difference. Sign up today to become a foster family and be the bridge
+          between hardship and healing. Because no one should have to face life’s toughest battles
+          alone—not people, and not their pets.
+        </p>
+
+        <div style="text-align: center;">
+          <a href="#" class="foster-btn">Foster Today</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER PLACEHOLDER -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // Load header
+    fetch("./header.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+
+        // Dropdown hover
+        const dropdown = document.getElementById("aboutDropdown");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        if (dropdown && dropdownMenu) {
+          dropdown.addEventListener("mouseenter", () => dropdownMenu.style.display = "block");
+          dropdown.addEventListener("mouseleave", () => dropdownMenu.style.display = "none");
+        }
+
+        // Highlight active nav link
+        const currentPage = window.location.pathname.split("/").pop();
+        document.querySelectorAll(".main-nav a").forEach(link => {
+          if (link.getAttribute("href") === currentPage) link.classList.add("active");
+        });
+      });
+
+    // Load footer
+    fetch("./footer.html")
+      .then(response => response.text())
+      .then(data => document.getElementById("footer-placeholder").innerHTML = data);
+
+    // Carousel logic
+    let currentSlide = 0;
+    const slides = document.querySelectorAll(".carousel-slide");
+    const dots = document.querySelectorAll(".dot");
+
+    function showSlide(n) {
+      if (n >= slides.length) currentSlide = 0;
+      if (n < 0) currentSlide = slides.length - 1;
+
+      slides.forEach(slide => slide.classList.remove("active"));
+      dots.forEach(dot => dot.classList.remove("active"));
+
+      slides[currentSlide].classList.add("active");
+      dots[currentSlide].classList.add("active");
+    }
+
+    function changeSlide(n) {
+      currentSlide += n;
+      showSlide(currentSlide);
+    }
+
+    function goToSlide(n) {
+      currentSlide = n;
+      showSlide(currentSlide);
+    }
+  </script>
+</body>
+</html>

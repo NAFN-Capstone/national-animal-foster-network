@@ -1,27 +1,135 @@
+/* === GLOBAL RESET === */
+html, body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  color: #fff; /* Default text color for header if you want */
+}
+
+/* === HEADER FONT CONSISTENCY === */
+.main-header,
+.main-header * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 500;
+  color: white;
+}
+
+/* Specifically for the logo */
+.logo h2,
+.logo a {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: white;
+  text-decoration: none;
+}
+
+
+/* === ABOUT PAGE STYLING === */
+.about-wrapper {
+  background: #91AA91;
+  padding: 60px 0;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+}
+
+.about-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+  background: none;       /* ✅ remove white */
+  border-radius: 0;       /* ✅ no curved edges */
+  padding: 40px;
+  box-shadow: none;       /* ✅ remove white "card" shadow */
+}
+
+
+.about-image img {
+  width: 400px;
+  height: auto;
+  border-radius: 8px;
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 32px;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.about-content p {
+  line-height: 1.6;
+  font-size: 16px;
+  color: #333;
+}
+
+.about-note {
+  text-align: center;
+  font-style: italic;
+  color: #555;
+  margin-top: 20px;
+}
+
+
+/* Ensure dropdowns are hidden by default */
+.dropdown-menu {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+}
+
+/* Show on hover smoothly */
+.dropdown:hover .dropdown-menu {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /* Header Styles */
 .main-header {
-    background-color: #2c3e50;
-    padding: 1rem 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
+  background-color: #2c3e50;
+  padding: 0.75rem 0;  /* slightly tighter vertical padding */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;   /* slightly smaller horizontal padding */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
   
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .logo h2 {
+  .logo a,
+  .logo h2,
+  .logo a:visited,
+  .logo a:hover {
     color: white;
-    margin: 0;
-    font-size: 1.8rem;
+    text-decoration: none;
+    font-weight: bold;
   }
+  
   
   .main-nav ul {
     list-style: none;
@@ -109,3 +217,219 @@
   .hero p {
     font-size: 1.2rem;
   }
+
+  .hero .carousel-container,
+  .image-carousel .carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    height: 350px; 
+    overflow: hidden;
+  }
+  
+  .hero .carousel-slide img,
+  .image-carousel .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 5px;
+  }
+/* CUTE CAROUSEL BUTTONS */
+.hero .carousel-btn,
+.image-carousel .carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  background: #ffffffaa; /* Semi-transparent white */
+  border: 2px solid #91AA91; /* Soft NAFN green border */
+  color: #333;
+  font-size: 22px;
+  font-weight: bold;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn:hover {
+  background: #91AA91;
+  color: white;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+/* === FOOTER === */
+.site-footer {
+  background-color: #ffffff;
+  border-top: 6px solid #91AA91;
+  padding: 20px 0;
+  width: 100%;
+  text-align: center;
+}
+
+/* Layout for everything in one line */
+.footer-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 50px;
+  padding: 0 60px;
+}
+
+/* 🐾 Animal silhouettes — softer gray */
+.footer-row img.animal {
+  height: 50px;
+  width: auto;
+  filter: grayscale(100%) brightness(0.55); /* lighter and softer gray */
+  opacity: 0.05;
+  transition: opacity 0.3s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.footer-row img.animal:hover {
+  opacity: 0.8;
+  filter: grayscale(0%) brightness(0.85);
+  transform: scale(1.1);
+}
+
+/* 📱 Social media icons — darker and higher contrast */
+.footer-socials-inline {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.footer-socials-inline img {
+  height: 50px;
+  width: 50px;
+  opacity: 1;
+  filter: brightness(0.45) contrast(1.5) saturate(1.2); /* darker and punchier */
+  transition: all 0.3s ease;
+}
+
+.footer-socials-inline img:hover {
+  filter: brightness(0.9) contrast(1.3) saturate(1.1);
+  transform: scale(1.25);
+  opacity: 1;
+}
+
+
+/* === VOLUNTEER PAGE === */
+.volunteer-wrapper {
+  background: #91AA91;
+  padding: 80px 0;
+  width: 100%;
+  font-family: inherit;
+}
+
+.volunteer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 40px;
+  width: 100%;
+  padding: 0 80px; /* even side padding instead of max-width */
+  box-sizing: border-box;
+}
+
+/* Left + Right placeholder graphics */
+.volunteer-graphic {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.graphic-box {
+  width: 200px;
+  height: 420px;
+  background-color: #d3d3d3;
+  border-radius: 6px;
+  text-align: center;
+  color: #333;
+  font-style: italic;
+  padding-top: 190px;
+}
+
+/* Center form section */
+.volunteer-content {
+  flex: 2;
+  text-align: center;
+  background: transparent;
+  color: #222;
+}
+
+.volunteer-content h1 {
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.volunteer-content h2 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 30px;
+}
+
+/* Form styling */
+.volunteer-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.volunteer-form label {
+  align-self: flex-start;
+  font-size: 14px;
+  color: #222;
+}
+
+.volunteer-form input {
+  width: 100%;
+  padding: 8px;
+  border: none;
+  background-color: #f3f3f3;
+  border-radius: 3px;
+  font-size: 14px;
+}
+
+.volunteer-form button {
+  width: 100%;
+  background-color: #5f7f7c;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  padding: 10px;
+  margin-top: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.volunteer-form button:hover {
+  background-color: #4c6764;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .volunteer-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 30px;
+  }
+
+  .volunteer-graphic {
+    display: none;
+  }
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
